@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polla Mundialista PWA</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Encabezado de la App -->
+    <header class="app-header">
+        <h1 id="app-title">🏆 Polla Mundialista</h1>
+    </header>
+
+    <!-- Contenedor Principal de Pantallas -->
+    <main class="app-content">
+
+        <!-- 1. PANTALLA LOGIN -->
+        <section id="view-login" class="view">
+            <div class="card">
+                <h2>¡Bienvenido!</h2>
+                <p>Ingresa tus datos para empezar a pronosticar.</p>
+                <form id="form-login">
+                    <div class="form-group">
+                        <label for="login-name">Nombre o Apodo:</label>
+                        <input type="text" id="login-name" required placeholder="Ej. JuanGol">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-phone">Teléfono (WhatsApp):</label>
+                        <input type="tel" id="login-phone" required placeholder="Ej. +57 300...">
+                    </div>
+                    <button type="submit" class="btn-block">Ingresar al Juego</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 2. PANTALLA PREDICCIONES (Oculta por defecto) -->
+        <section id="view-predicciones" class="view hidden">
+            <h2>Tus Pronósticos</h2>
+            <div id="container-partidos">
+                <!-- Los partidos se cargarán dinámicamente con JS -->
+                <p class="loading">Cargando partidos disponibles...</p>
+            </div>
+            <button id="btn-guardar-votos" class="btn-floating hidden">💾 Guardar Pronósticos</button>
+        </section>
+
+        <!-- 3. PANTALLA RANKING (Oculta por defecto) -->
+        <section id="view-ranking" class="view hidden">
+            <h2>Tabla de Posiciones</h2>
+            <div class="card">
+                <table class="table-ranking">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Jugador</th>
+                            <th>Pts</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body-ranking">
+                        <!-- Las posiciones se cargarán dinámicamente -->
+                        <tr><td colspan="3" class="loading">Cargando posiciones...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. PANTALLA REGLAMENTO (Oculta por defecto) -->
+        <section id="view-info" class="view hidden">
+            <h2>Reglamento y Premios</h2>
+            <div class="card info-box">
+                <h3>Sistema de Puntos</h3>
+                <ul>
+                    <li><strong>3 Puntos:</strong> Achicarle al marcador exacto (Ej: Dijiste 2-1 y quedó 2-1).</li>
+                    <li><strong>1 Punto:</strong> Achicarle al ganador o empate, pero no al marcador (Ej: Dijiste 1-0 y quedó 3-1).</li>
+                    <li><strong>0 Puntos:</strong> Si no acertaste a nada.</li>
+                </ul>
+                <hr>
+                <h3>🏆 Premios</h3>
+                <p>Todo lo recaudado se distribuirá así:</p>
+                <ul>
+                    <li>🥇 <strong>1er Puesto:</strong> 60% del pozo.</li>
+                    <li>🥈 <strong>2do Puesto:</strong> 30% del pozo.</li>
+                    <li>🥉 <strong>3er Puesto:</strong> 10% del pozo.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Menú de Navegación Inferior Móvil -->
+    <nav class="nav-bottom" id="main-nav">
+        <button class="nav-item active" data-view="view-predicciones">
+            <span class="icon">⚽</span>
+            <span class="text">Partidos</span>
+        </button>
+        <button class="nav-item" data-view="view-ranking">
+            <span class="icon">📊</span>
+            <span class="text">Posiciones</span>
+        </button>
+        <button class="nav-item" data-view="view-info">
+            <span class="icon">📜</span>
+            <span class="text">Reglas</span>
+        </button>
+    </nav>
+
+    <!-- Scripts de la Aplicación -->
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>
